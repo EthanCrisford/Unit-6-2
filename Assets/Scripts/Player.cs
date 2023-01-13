@@ -7,12 +7,13 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
     //OnTriggerEnter2D col;
-
     float InputHorizontal;
     float InputVertical;
     public float speed = 5.0f;
     SpriteRenderer sr;
-    public GameObject particleEffect;
+    public GameObject particleEffect1;
+    public GameObject particleEffect2;
+    //public GameObject Player;
 
     // Start is called before the first frame update
     void Start()
@@ -52,9 +53,11 @@ public class Player : MonoBehaviour
     {
         if (col.gameObject.tag == "Coin")
         {
-            Instantiate(particleEffect, transform.position, Quaternion.identity);
-
+            Instantiate(particleEffect1, transform.position, Quaternion.identity);
+            
             Destroy(col.gameObject);
+
+            Instantiate(particleEffect2, GameObject.FindGameObjectsWithTag("Player")[0].transform);
         }
     }
 }
